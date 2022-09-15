@@ -7,7 +7,7 @@
 Matrix::Matrix Matrix::createMatrix(int size) {
     Matrix matrix = {};
     matrix.size = size;
-    matrix.capacity = size * 2;
+    matrix.capacity = size * size; // u can make size 'size * 2' and it will be enough for such matrix
     matrix.elements = new Element[matrix.capacity];
     matrix.raw_start_indices = new int[size];
     for (int i = 0; i < size; ++i) {
@@ -28,15 +28,6 @@ int Matrix::findPlace(Matrix& matrix, int i, int j) {
     if (k == -1) {
         k = 0;
     }
-//    for (; k < matrix.current_size && matrix.elements[k].i <= i; ++k) {
-//        if(matrix.elements[k].j == j && matrix.elements[k].i == i) {
-//            return k;
-//        }
-//    }
-
-//    while (matrix.elements[k].i < i && matrix.elements[k].j < j && k < matrix.current_size) {
-//        k++;
-//    }
     while (k < matrix.current_size && matrix.elements[k].i < i) {
         k++;
     }
